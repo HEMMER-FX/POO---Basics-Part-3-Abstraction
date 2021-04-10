@@ -1,55 +1,49 @@
 <?php
-
 require_once 'Vehicle.php';
+
+
 class Truck extends Vehicle
 {
-    private int $capacity;
-    private int $stock = 0;
-    private string $energy;
+    protected int $stockCapacity;
+    protected int $chargement = 0;
 
-    public function __construct(string $color, int $nbSeats, int $capacity, int $stock, string $energy)
+    function __construct(string $color, int $nbSeats, int $stockCapacity)
     {
         parent::__construct($color, $nbSeats);
-        $this->setCapacity($capacity);
-        $this->setStock($stock);
-        $this->setEnergy($energy);
+        $this->stockCapacity = $stockCapacity;
     }
 
-    public function getCapacity():int
-    {
-        return $this->capacity;
-    }
-    public function setCapacity(int $capacity):void
-    {
-        $this->capacity= $capacity;
-    }
-    public function getStock():int
-    {
-        return $this->stock;
-    }
-    public function setStock(int $stock):void
-    {
-        $this->capacity = $stock;
-    }
-    public function setEnergy(string $energy):void
-    {
-        $this->energy = $energy;
-    }
-
-    public function getEnergy(): string
-    {
-        return $this->energy;
-    }
-
-    public function charging():string
-    {
-        if($this->stock >= 1000){
-            $loading="full";
-            return $loading;
+    public function isFull(){
+        if ($this->getStockCapacity() > 0){
+            echo "in filling";
+        }elseif ($this->getStockCapacity() <= 0){
+            echo "full";
         }
-        else{
-            $loading="in filling";
-            return $loading;
-        }
+    }
+
+    //getters
+
+    public function getChargement(): int
+    {
+        return $this->chargement;
+    }
+
+    public function getStockCapacity():int {
+        return $this->stockCapacity;
+    }
+
+    //setters
+
+    public function setChargement(int $chargement): void
+    {
+        $this->chargement = $chargement;
+    }
+
+    /*
+     * @param int $stockCapacity
+     */
+    public function setStockCapacity(int $stockCapacity): void
+    {
+        $this->stockCapacity = $stockCapacity;
     }
 }

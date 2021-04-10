@@ -1,29 +1,52 @@
 <?php
-require_once 'bicycles.php';
+require_once 'HighWay.php';
+require_once 'MotorWay.php';
+require_once 'ResidentialWay.php';
+require_once 'PedestrianWay.php';
+require_once 'Vehicle.php';
 require_once 'Car.php';
+require_once 'Bicycle.php';
 require_once 'Truck.php';
 
+$socaltra = new Truck("black", 3, 90);
+
+$rockrider = new Bicycle('red',15,1,2);
+$socaltra = new Truck( 19, 'blue', 2, 'fuel');
+$audi = new car ('blue', 2);
+
+$a4 = new MotorWay();
+$d230 = new ResidentialWay();
+$cyclePist = new PedestrianWay();
+
+$a4->addVehicle($socaltra);
+$a4->addVehicle($audi);
+$a4->addVehicle($rockrider);
+var_dump($a4);
+
+$dep215->addVehicle($socaltra);
+$dep215->addVehicle($audi);
+$dep215->addVehicle($rockrider);
+var_dump($dep215);
+
+$cycle->addVehicle($socaltra);
+$cycle->addVehicle($audi);
+$cycle->addVehicle($rockrider);
+var_dump($cycle);
 
 
-// instance de vélo
-$bike = new Bicycle('blue',18,16,2);
-$biker = new Bicycle('red',15,15,15);
-$toto = new Bicycle('yellow',1);
-var_dump($toto);
-//instance de voiture
-$alphonse = new Car('green',5,'fuel');
-$roger = new Car('black',12,'fuel');
-$car = new Car('green', 4, 'electric');
-
-var_dump($alphonse);
-var_dump(car::ALLOWED_ENERGIES);
-
-$socaltra = new Truck('white',2,50,1000,'fuel');
-var_dump($socaltra);
-
-echo $socaltra->charging() . '<br>';
-echo $socaltra->forward() . '<br>';
+echo $socaltra->forward();
 echo $socaltra->brake();
+echo "<br>";
+
+$rockruder = new Bicycle("red",3);
+echo $rockruder->forward();
+echo $rockruder->brake();
+echo "<br>";
+
+$dacia = new Car("red",3,"fuel");
+echo $dacia->forward();
+echo $dacia->brake();
+echo "<br>";
 
 
 
